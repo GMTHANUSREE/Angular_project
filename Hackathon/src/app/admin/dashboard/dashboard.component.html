@@ -1,0 +1,199 @@
+
+
+<nav>
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
+      <li class="breadcrumb-item active">Dashboard</li>
+    </ol>
+  </nav>
+
+  <h5>Dashboard</h5>
+  <h6 align="right" style=" font-family: Amasis MT Pro Black"><strong>{{ToDay|date:"fullDate"}}</strong></h6>
+  <!-- left box -->
+  <div class="row">
+    <div class="col-lg-3 pb-3" style="background-color: #e9e6e6">
+      <div class="row">
+        <div
+          class="col-11 text-white text-center mx-auto rounded pt-2 pb-2 font-weight-bold"
+          style="background-color: #302f2f;font-family:  Amasis MT Pro Black, sans-serif;">
+          {{ Designation|uppercase}}
+        </div>
+        <div class="col-12 text-center mt-2">
+          <img src="assets/user.png" width="120px" />
+        </div>
+        <div
+          class="col-12 text-center pt-2 pb-2 font-weight-bold" style="font-family:Amasis MT Pro Black">
+          {{ Username }}
+        </div>
+        <div class="col-12 text-center pt-2 pb-2" style="font-family:Amasis MT Pro Black">
+         <strong> TEAM SUMMARY</strong>
+        </div>
+        <div class="col-12 mb-3">
+          <ul class="list-group" style="font-family:Amasis MT Pro Black">
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              TOTAL TEAM MEMBERS
+              <span class="badge badge-secondary" style="font-size:13px">
+                {{TotalTeamMembers}}</span>
+            </li>
+            <li
+              class="list-group-item d-flex justify-content-between align-items-center"
+            >
+              TOTAL EXPENDITURE  OF ALL PROJECTS
+              <span class="badge badge-secondary badge-pill" style="font-size: 13px">
+                $ {{ TotalCostOfAllProjects }} k</span>
+            </li>
+            <li
+              class="list-group-item d-flex justify-content-between align-items-center"
+            >
+              PENDING TASKS
+              <span class="badge badge-secondary " style="font-size: 13px">
+                {{ PendingTasks }}</span>
+            </li>
+            <li
+              class="list-group-item d-flex justify-content-between align-items-center">
+              UPCOMING PROJECTS
+              <span class="badge badge-secondary " style="font-size: 13px">
+                {{ UpComingProjects }}</span>
+            </li>
+          </ul>
+        </div>
+    </div>
+</div>
+ <!-- middle  box -->
+
+ <div class="col-lg-6 ">
+    <div class="row"  style=" font-family: Amasis MT Pro Black">
+      <div class="col-12 pt-0 pb-2" style="background-color: #302f2f">
+        <div class="row mt-2">
+          <div class="col-6 text-left">
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
+                  Teams
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <a class="dropdown-item" href="#" 
+                     *ngFor="let team of Teams" 
+                     onclick="return false" (click)="ChangeProject($event)">
+                    {{team}} </a>
+                  
+                </div>
+              </div> 
+          </div>
+          <div class="col-6 text-right">
+            <div class="dropdown" style="float:right;">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
+                Year
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="#" *ngFor="let year of Years">{{year}} </a>
+                   
+   
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+  
+      <div
+        class="col-11 mx-auto mt-1 text-white text-center pt-2 pb-2 mx-auto rounded font-weight-bold"
+        style="background-color: #302f2f; font-family: Amasis MT Pro Black">
+        PROJECT EXPENDITURE DETAILS
+      </div>
+      <div class="col-12"  style=" font-family: Amasis MT Pro Black">
+        <table class="table table-borderless">
+          <tr>
+            <td>Project Cost</td>
+            <td>{{ ProjectCost|currency:"INR" }}</td>
+          </tr>
+          <tr>
+            <td>Current Expenditure</td>
+            <td>{{ CurrentExpenditure|currency:"INR" }}</td>
+          </tr>
+          <tr>
+            <td>Available Funds</td>
+            <td>{{ AvailableFunds|currency:"INR" }}</td>
+          </tr>
+        </table>
+      </div>
+      <div
+        class="col-11 mx-auto mt-1 text-white text-center pt-2 pb-2 mx-2 rounded font-weight-bold"
+        style="background-color: #302f2f; font-family: Amasis MT Pro Black"
+      >
+        TEAM MEMBERS SUMMARY
+      </div>
+      
+      <div class="col-12">
+        <table class="table" style=" font-family: Amasis MT Pro Black" >
+          <tr>
+            <th>Team Name</th>
+            <th>Team Members Count</th>
+            <th>Temporarily Unavailable Members</th>
+          </tr>
+          <tr *ngFor="let teamsummary of TeamMembersSummary">
+            <td><b>{{teamsummary.TeamName}}</b></td>
+            <td>{{teamsummary.TeamMembersCount}}</td>
+            <td>{{teamsummary.TemporarilyUnavailableMembers}}</td>
+          </tr>
+          
+          
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- right box-->
+  <div class="col-lg-3" style="background-color: #e9e6e6">
+    <div class="row">
+      <div
+        class="col-11 mx-auto mt-1 text-white text-center pt-1 pb-2 mx-2 rounded font-weight-bold"
+        style="background-color: #302f2f; font-family: Amasis MT Pro Black">
+        TEAM MEMBERS
+      </div>
+      <div class="col-lg-12 pt-2">
+        <div class="accordion" id="accordion1" >
+          <!--outer ngFor  to display teamname-->
+          <div class="card" *ngFor="let TeamMemberGroup of TeamMembers; let i=index">
+            <div class="card-header bg-secondary" id="card1">
+              <h2 class="mb-0">
+                <button
+                  class="btn btn-link text-white"
+                  type="button"
+                  data-toggle="collapse"
+                  [attr.data-target]=" '#cardbody1'+ i">
+                  {{TeamMemberGroup.TeamName}}
+                </button>
+              </h2>
+            </div>
+            <div [id]="'cardbody1'+i" class="collapse" data-parent="#accordion1" >
+              <div class="card-body">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>Name</th>
+                      <th>Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <!-- inner ngFor to display details of each person-->
+                    <tr *ngFor="let Member of TeamMemberGroup.Members">
+                      <td>{{Member.ID}}</td>
+                      <td>{{Member.Name}}</td>
+                      <td [style.color]="Member.stauts == 'Busy' ? 'red' : 'green'">{{Member.stauts}}</td>
+                    </tr> 
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+  
