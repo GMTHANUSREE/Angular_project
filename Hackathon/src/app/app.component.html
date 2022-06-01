@@ -11,12 +11,21 @@
   </button>
   <div class="collapse navbar-collapse" id="mynav">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item">
+      <li class="nav-item"  *ngIf="loginService.currentUserName != null">
         <em><a class="nav-link px-2 text-white" routerLink="dashboard">Dashboard</a></em>
       </li>
       <li class="nav-item">
         <em><a class="nav-link px-2 text-white"  routerLink="about" >About</a></em>
       </li>
+      <li class="nav-item" *ngIf="loginService.currentUserName != null">
+        <a class="nav-link" href="#">{{loginService.currentUserName}}</a>
+    </li>
+    <li class="nav-item" *ngIf="loginService.currentUserName != null">
+        <a class="nav-link" href="#" (click)="loginService.Logout()">Logout</a>
+    </li>
+    <li class="nav-item" *ngIf="loginService.currentUserName == null">
+        <a class="nav-link" routerLink="login">Login</a>
+    </li>
     </ul>
      
  
