@@ -46,7 +46,7 @@ export class ProjectsService
     if (sessionStorage['currentUser'] != null)
     {
       currentUser = JSON.parse(sessionStorage['currentUser']);
-      headers = headers.set("Authorization", "Bearer " + currentUser.token); /* header request is sent to server. regenrate signature and copare with receiveed signature  if matched: valid request otherwise invalid*/
+      headers = headers.set("Authorization", "Bearer " + currentUser.token);
     }
 
     return this.httpClient.post<Project>(this.urlPrefix + "/api/projects", newProject, { headers: headers, responseType: "json" });
@@ -56,7 +56,7 @@ export class ProjectsService
   {
     var currentUser = { token: "" };
     var headers = new HttpHeaders();
-    headers = headers.set("Authorization", "Bearer "); 
+    headers = headers.set("Authorization", "Bearer ");
     if (sessionStorage['currentUser'] != null)
     {
       currentUser = JSON.parse(sessionStorage['currentUser']);
@@ -94,4 +94,3 @@ export class ProjectsService
     return this.httpClient.get<Project[]>(this.urlPrefix + "/api/projects/search/" + searchBy + "/" + searchText, { headers: headers, responseType: "json" });
   }
 }
-

@@ -1,50 +1,43 @@
-
-<nav class="navbar navbar-expand-sm bg-dark text-white">
-   <i><a class="navbar-brand nav-link px-2 text-white" href="#">TEAMROUTINE</a></i>
-  <button
-    class="navbar-toggler"
-    type="button"
-    data-toggle="collapse"
-    data-target="#mynav"
-  >
-    <span class="navbar-toggler-icon"></span>
+<nav class="navbar navbar-expand-sm bg-success navbar-dark">
+  <a class="navbar-brand" href="#">
+      Angular Task Manager
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mynav">
+      <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="mynav">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item"  *ngIf="loginService.currentUserName != null">
-        <em><a class="nav-link px-2 text-white" routerLink="dashboard">Dashboard</a></em>
-      </li>
-      <li class="nav-item">
-        <em><a class="nav-link px-2 text-white"  routerLink="about" >About</a></em>
-      </li>
-      <li class="nav-item">
-        <em><a class="nav-link px-2 text-white"  routerLink="project" >Project</a></em>
-      </li>
-      <li class="nav-item" *ngIf="loginService.currentUserName != null">
-        <a class="nav-link" href="#">{{loginService.currentUserName}}</a>
-    </li>
-    <li class="nav-item" *ngIf="loginService.currentUserName != null">
-        <a class="nav-link" href="#" (click)="loginService.Logout()">Logout</a>
-    </li>
-    <li class="nav-item" *ngIf="loginService.currentUserName == null">
-        <a class="nav-link"  style="font-family:  Amasis MT Pro Black " routerLink="login">Login</a>
-    </li>
-    </ul>
-     
- 
-      <div class="input-group" style = "position:relative; left:0.7px; top:2px" >
-      
-        <input type="search" class="form-control form-control-dark text-white bg-dark"  placeholder="Search..." aria-label="Search">
-        <button type="button" class="btn btn-warning my2- my-sm-0"  >Search</button>
-      </div>
-     
-    
+      <ul class="navbar-nav mr-auto">
+          <li class="nav-item" *ngIf="loginService.currentUserName != null">
+              <a class="nav-link" routerLink="dashboard">Dashboard</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" routerLink="about">About</a>
+          </li>
+          <li class="nav-item" *ngIf="loginService.currentUserName != null">
+              <a class="nav-link" routerLink="project">Projects</a>
+          </li>
+          <li class="nav-item" *ngIf="loginService.currentUserName != null">
+            <a class="nav-link" href="#">{{loginService.currentUserName}}</a>
+        </li>
+        <li class="nav-item" *ngIf="loginService.currentUserName != null">
+            <a class="nav-link" href="#" (click)="loginService.Logout()">Logout</a>
+        </li>
+        <li class="nav-item" *ngIf="loginService.currentUserName == null">
+            <a class="nav-link" routerLink="login">Login</a>
+        </li>
+      </ul>
+      <form class="form-inline my-2 my-lg-0">
+          <div class="input-group">
+              <div class="input-group-prepend">
+                  <span class="input-group-text" id="search"><i class="fa fa-search"></i></span>
+              </div>
+              <input type="text" class="form-control" placeholder="Search">
+          </div>
+          <button class="btn btn-warning my2- my-sm-0" type="button">Search</button>
+      </form>
   </div>
 </nav>
-
 
 <div class="container-fluid">
   <router-outlet></router-outlet>
 </div>
-
-

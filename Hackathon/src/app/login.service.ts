@@ -9,28 +9,29 @@ import { map } from 'rxjs/operators';
 })
 export class LoginService
 {
-  urlPrefix: string = "http://localhost:9090"; 
-  constructor(private httpClient: HttpClient) /*Communicating with backend services using HTTP */
+  urlPrefix: string = "http://localhost:9090"; //make this as empty ("") if you are using asp.net core [without CORS]
+
+  constructor(private httpClient: HttpClient)
   {
   }
 
   currentUserName: any = null;
 
-  public Login(loginViewModel: LoginViewModel): Observable<any> /*invoked when click on the login button */
+  public Login(loginViewModel: LoginViewModel): Observable<any>
   {
     return this.httpClient.post<any>(this.urlPrefix + "/authenticate", loginViewModel, { responseType: "json" })
       .pipe(map(user =>
       {
-        if (user) /* if user is not equal to null assing user name to current user name */
+        if (user)
         {
           this.currentUserName = user.userName;
-          sessionStorage['currentUser'] = JSON.stringify(user);
+          sessionStorage["currentUser"]= JSON.stringify(user);
         }
         return user;
       }));
   }
 
-  public Logout() /* when logged out user name is set to null */
+  public Logout()
   {
     sessionStorage.removeItem("currentUser");
     this.currentUserName = null;

@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { LoginService } from './login.service';
+import { DomSanitizer } from '@angular/platform-browser';
+
 
 @Component({
   selector: 'app-root',
@@ -8,12 +10,12 @@ import { LoginService } from './login.service';
 })
 export class AppComponent
 {
-  constructor(public loginService: LoginService)
+  constructor(public loginService: LoginService,private domSanitizer: DomSanitizer)
   {
   }
 
   onSearchClick()
   {
     console.log(this.loginService.currentUserName);
-  }
+}
 }

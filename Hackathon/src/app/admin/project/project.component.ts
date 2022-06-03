@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ProjectsService } from 'src/app/project.service';
+import { ProjectsService } from "src/app/project.service";
 import { Project } from 'src/app/project';
 
 @Component({
@@ -37,7 +37,7 @@ export class ProjectsComponent implements OnInit
     );
   }
 
-  SaveClick()
+  onSaveClick()
   {
     this.projectsService.insertProject(this.newProject).subscribe((response) =>
     {
@@ -60,7 +60,7 @@ export class ProjectsComponent implements OnInit
     });
   }
 
-  Edit(event: any, index: number)
+  onEditClick(event: any, index: number)
   {
     this.editProject.projectID = this.projects[index].projectID;
     this.editProject.projectName = this.projects[index].projectName;
@@ -69,7 +69,7 @@ export class ProjectsComponent implements OnInit
     this.editIndex = index;
   }
 
-  UpdateClick()
+  onUpdateClick()
   {
     this.projectsService.updateProject(this.editProject).subscribe((response: Project) =>
     {
@@ -91,7 +91,7 @@ export class ProjectsComponent implements OnInit
       });
   }
 
-  DeleteClick(event: any, index: number)
+  onDeleteClick(event: any, index: number)
   {
     this.deleteIndex = index;
     this.deleteProject.projectID = this.projects[index].projectID;
@@ -100,7 +100,7 @@ export class ProjectsComponent implements OnInit
     this.deleteProject.teamSize = this.projects[index].teamSize;
   }
 
-  DeleteConfirmClick()
+  onDeleteConfirmClick()
   {
     this.projectsService.deleteProject(this.deleteProject.projectID).subscribe(
       (response) =>

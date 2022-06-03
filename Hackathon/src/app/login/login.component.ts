@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit
 {
   loginViewModel: LoginViewModel = new LoginViewModel();
-  loginError: string = ""; /* to display error this property is created */
+  loginError: string = "";
 
   constructor(private loginService: LoginService, private router: Router) 
   {
@@ -23,13 +23,14 @@ export class LoginComponent implements OnInit
 
   onLoginClick(event: any)
   {
-    this.loginService.Login(this.loginViewModel).subscribe((response) =>
+    this.loginService.Login(this.loginViewModel).subscribe(
+      (response) =>
       {
-        this.router.navigateByUrl("/dashboard"); /* if login successful then redirect to dashboard page */  
+        this.router.navigateByUrl("/dashboard");
       },
-      (error) => 
+      (error) =>
       {
-        console.log(error); /* logout unsuccessful error msg will be displayed */
+        console.log(error);
         this.loginError = "Invalid Username or Password";
       },
     );
