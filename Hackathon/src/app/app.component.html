@@ -17,6 +17,9 @@
       <li class="nav-item">
         <em><a class="nav-link px-2 text-white"  routerLink="about" >About</a></em>
       </li>
+      <li class="nav-item">
+        <em><a class="nav-link px-2 text-white"  routerLink="project" >Project</a></em>
+      </li>
       <li class="nav-item" *ngIf="loginService.currentUserName != null">
         <a class="nav-link" href="#">{{loginService.currentUserName}}</a>
     </li>
@@ -24,7 +27,7 @@
         <a class="nav-link" href="#" (click)="loginService.Logout()">Logout</a>
     </li>
     <li class="nav-item" *ngIf="loginService.currentUserName == null">
-        <a class="nav-link" routerLink="login">Login</a>
+        <a class="nav-link"  style="font-family:  Amasis MT Pro Black " routerLink="login">Login</a>
     </li>
     </ul>
      

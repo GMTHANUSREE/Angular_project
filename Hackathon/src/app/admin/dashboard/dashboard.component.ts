@@ -32,7 +32,7 @@ export class DashboardComponent  {
 
   ngOnInit(){
     /** initialize the properties*/
-    this.Designation = 'Team Leader';
+    this.Designation = 'Manager';
     this.Username = 'Basavaraj Juttiyavar';
     this.TotalTeamMembers = 67;
     this.TotalCostOfAllProjects = 21;

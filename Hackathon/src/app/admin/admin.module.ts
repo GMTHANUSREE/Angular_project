@@ -4,11 +4,16 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { AboutComponent } from './about/about.component';
 import { MyProfileComponent } from './my-profile/my-profile.component';
 import { DashboardService } from '../dashboard.service';
+import { FormsModule } from '@angular/forms';
+import { ProjectsComponent } from './project/project.component';
 
 @NgModule({
-  declarations: [DashboardComponent, MyProfileComponent, AboutComponent],
-  imports: [CommonModule],
-  exports: [DashboardComponent, MyProfileComponent, AboutComponent],
-  providers: [DashboardService],
+  declarations: [DashboardComponent, MyProfileComponent, AboutComponent,ProjectsComponent],
+  imports: [CommonModule,FormsModule],
+  exports: [DashboardComponent, MyProfileComponent, AboutComponent,ProjectsComponent],
+  providers: [DashboardService]
 })
-export class AdminModule { }
+export class AdminModule 
+{
+  
+ }
